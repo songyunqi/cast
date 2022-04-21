@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane id="Chat" prefHeight="820.0" prefWidth="1243.0" stylesheets="@css/chat.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <!-- 控制栏 -->
+        <Pane id="bar" prefHeight="820" prefWidth="90">
+           <children>
+               <!-- 聊天 -->
+               <Button id="bar_chat" text="epub转换" layoutX="23" layoutY="100" mnemonicParsing="false" prefHeight="30" prefWidth="80" />
+               <!-- 好友 -->
+               <Button id="bar_friend" text="tts合成" layoutX="23" layoutY="160" mnemonicParsing="false" prefHeight="30" prefWidth="80" />
+               <!-- 广场 -->
+               <Button id="bar_location" layoutX="23" layoutY="220" mnemonicParsing="false" prefHeight="30" prefWidth="30" />
+           </children>
+        </Pane>
+
+        <!-- 组；group_bar_chat -->
+        <Pane id="group_bar_chat" layoutX="76" layoutY="1" prefHeight="818" prefWidth="1166" style="-fx-background-color:transparent;-fx-border-width:0;" visible="true">
+            <children>
+                <!-- 操作栏；最小化、关闭 -->
+                <Pane id="operation" layoutX="314" prefHeight="32" prefWidth="852" />
+                <!-- 搜索栏 -->
+                <Pane prefHeight="80" prefWidth="314" styleClass="search">
+                    <children>
+                        <Label layoutX="270" layoutY="30" prefHeight="30" prefWidth="30" styleClass="searchAdd" />
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
+
+    </children>
+
+</Pane>
