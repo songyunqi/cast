@@ -11,7 +11,7 @@
     </padding>
     <Label fx:id="scriptFilePath" text="xlsx文件路径"/>
     <Button fx:id="fileChoose" text="选择..." onAction="#onFileChooseClick"/>
-    <Button fx:id="tts" text="TTS合成" onAction="#onTTSClick"/>
+    <Button fx:id="tts" text="TTS生成" onAction="#onTTSClick"/>
 
-    <Button fx:id="ttsCombine" text="TTS合并" onAction="#onTTSCombineClick"/>
+    <Button fx:id="ttsCombine" text="Wav合并" onAction="#onTTSCombineClick"/>
 </VBox>
