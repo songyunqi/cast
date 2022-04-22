@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.SequenceInputStream;
 import java.util.Arrays;
 import java.util.Vector;
+import java.util.stream.Stream;
 
 public class WavCombiner {
     private String dir;
@@ -26,17 +27,23 @@ public class WavCombiner {
         if (CollectionUtils.sizeIsEmpty(files)) {
             return;
         }
-        Arrays.sort(files);
+        //重新排序
+        files = Stream.of(files).sorted((a, b) -> {
+            String[] aSplits = a.split("-");
+            String[] bSplits = b.split("-");
+            int aNum = Integer.parseInt(aSplits[aSplits.length - 1].replace(".wav", ""));
+            int bNum = Integer.parseInt(aSplits[bSplits.length - 1].replace(".wav", ""));
+            return bNum - aNum;
+        }).toArray(String[]::new);
         File file0 = new File(dir, files[0]);
         AudioFileFormat aff = AudioSystem.getAudioFileFormat(file0);
         Vector<AudioInputStream> streams = new Vector<>();
         long length = 0;
         for (String fileName : files) {
             File tmpFile = new File(dir, fileName);
-            AudioFileFormat tempAff = AudioSystem.getAudioFileFormat(tmpFile);
-            System.out.println("fileName:getType:" + tempAff.getType());
+            //*/AudioFileFormat tempAff = AudioSystem.getAudioFileFormat(tmpFile);
+            //System.out.println("fileName:getType:" + tempAff.getType());
             AudioInputStream tmpStream = AudioSystem.getAudioInputStream(tmpFile);
-            //tmpStream.getFormat().
             length += tmpStream.getFrameLength();
             streams.add(tmpStream);
         }
@@ -54,10 +61,10 @@ public class WavCombiner {
             stream.close();
         }
         //删除素材文件
-        for (String fileName : files) {
+        /*for (String fileName : files) {
             File tmpFile = new File(dir, fileName);
             tmpFile.delete();
-        }
+        }*/
     }
 
     public static void main(String[] args) throws Exception {

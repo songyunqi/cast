@@ -8,7 +8,7 @@ import java.io.File;
 import java.util.List;
 
 public class WavGenerator {
-    //private final TencentSpeechClient tencentSpeechClient = new TencentSpeechClient();
+    private final TencentSpeechClient tencentSpeechClient = new TencentSpeechClient();
     private final ScriptReader scriptReader;
 
     private String scriptFilePath;
@@ -29,7 +29,7 @@ public class WavGenerator {
         List<CastLines> lines;
         for (int i = 0; i < workbook.getNumberOfSheets(); i++) {
             lines = scriptReader.getSheetLines(workbook.getSheetAt(i));
-            TencentSpeechClient tencentSpeechClient = new TencentSpeechClient();
+            //TencentSpeechClient tencentSpeechClient = new TencentSpeechClient();
             if (CollectionUtils.isEmpty(lines)) {
                 continue;
             }
