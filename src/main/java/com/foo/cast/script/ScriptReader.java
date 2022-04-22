@@ -69,7 +69,13 @@ public class ScriptReader {
         for (int i = 0; i <= rowNum; i++) {
             int j = 0;
             Row row = sheet.getRow(i);
+            if (null == row) {
+                continue;
+            }
             Cell cell = row.getCell(j++);
+            if (null == cell) {
+                continue;
+            }
             String text = getCellValue(cell);
             cell = row.getCell(j);
             String cast = getCellValue(cell);
@@ -104,7 +110,7 @@ public class ScriptReader {
                 if (DateUtil.isCellDateFormatted(cell)) {
                     result = format.format(cell.getDateCellValue());
                 } else {
-                    result = String.valueOf(cell.getNumericCellValue());
+                    result = String.valueOf(cell.getNumericCellValue()).replace(".0", "");
                 }
                 break;
             case STRING:

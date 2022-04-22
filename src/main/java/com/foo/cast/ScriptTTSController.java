@@ -49,5 +49,9 @@ public class ScriptTTSController {
         String dir = file.getParent();
         WavCombiner wavCombiner = new WavCombiner(dir);
         wavCombiner.combine();
+        //wavCombiner.concat();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("合成结束");
+        alert.show();
     }
 }

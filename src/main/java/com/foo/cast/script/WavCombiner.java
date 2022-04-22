@@ -1,10 +1,14 @@
 package com.foo.cast.script;
 
+import org.apache.commons.collections4.CollectionUtils;
+
 import javax.sound.sampled.AudioFileFormat;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import java.io.File;
+import java.io.IOException;
 import java.io.SequenceInputStream;
+import java.util.Arrays;
 import java.util.Vector;
 
 public class WavCombiner {
@@ -17,18 +21,22 @@ public class WavCombiner {
     public void combine() throws Exception {
         File file = new File(dir);
         String[] files = file.list(
-                (dir, name) -> name.endsWith(".wav") && !name.contains("combined.wav")
+                (dir, name) -> name.endsWith(".wav") && !name.startsWith("._") && !name.endsWith("combined.wav")
         );
-        if (null == files || files.length == 1) {
+        if (CollectionUtils.sizeIsEmpty(files)) {
             return;
         }
+        Arrays.sort(files);
         File file0 = new File(dir, files[0]);
         AudioFileFormat aff = AudioSystem.getAudioFileFormat(file0);
         Vector<AudioInputStream> streams = new Vector<>();
         long length = 0;
         for (String fileName : files) {
             File tmpFile = new File(dir, fileName);
+            AudioFileFormat tempAff = AudioSystem.getAudioFileFormat(tmpFile);
+            System.out.println("fileName:getType:" + tempAff.getType());
             AudioInputStream tmpStream = AudioSystem.getAudioInputStream(tmpFile);
+            //tmpStream.getFormat().
             length += tmpStream.getFrameLength();
             streams.add(tmpStream);
         }
