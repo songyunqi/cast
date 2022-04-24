@@ -61,10 +61,10 @@ public class WavCombiner {
             stream.close();
         }
         //删除素材文件
-        /*for (String fileName : files) {
+        for (String fileName : files) {
             File tmpFile = new File(dir, fileName);
             tmpFile.delete();
-        }*/
+        }
     }
 
     public static void main(String[] args) throws Exception {
