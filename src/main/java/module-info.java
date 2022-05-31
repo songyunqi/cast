@@ -9,6 +9,7 @@ module com.foo.cast {
     requires com.google.common;
     requires java.desktop;
     requires org.apache.commons.lang3;
+    requires java.sql;
 
     opens com.foo.cast to javafx.fxml;
     exports com.foo.cast;

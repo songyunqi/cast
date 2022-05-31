@@ -1,12 +1,10 @@
 package com.foo.cast.tts;
 
 import com.foo.cast.script.CastLines;
-
 import com.google.common.io.Files;
 import com.tencent.tts.model.SpeechSynthesisResponse;
 import com.tencent.tts.service.SpeechSynthesisListener;
 import com.tencent.tts.utils.Ttsutils;
-import javafx.scene.control.Alert;
 
 import java.io.File;
 
@@ -50,6 +48,10 @@ public class ConcreteSpeechSynthesisListener extends SpeechSynthesisListener {
 
     @Override
     public void onFail(SpeechSynthesisResponse response) {
+        //第几个sheet,第几行报错
+        System.out.println("tts 出错>>>>");
+        System.out.println(this.castLines.getSheetName() + "-" + this.castLines.getRowIndex());
         System.out.println(response.getMessage());
+        System.out.println("<<<<tts 出错");
     }
 }
