@@ -99,6 +99,11 @@ public class EpubTransformer {
                 } else {
                     for (int j = 0; j < elements.size(); j++) {
                         String text = elements.get(j).text();
+                        //跳过注释
+                        if ("【注释】".equals(text)) {
+                            break;
+                        }
+                        //中文问号有问题吗？
                         sheet.createRow(j).createCell(0).setCellValue(text);
                     }
                 }
