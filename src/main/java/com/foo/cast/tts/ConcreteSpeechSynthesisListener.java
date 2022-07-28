@@ -14,9 +14,9 @@ public class ConcreteSpeechSynthesisListener extends SpeechSynthesisListener {
     //private static final String CODEC = "pcm";
     private static final int SAMPLE_RATE = 16000;
 
-    private CastLines castLines;
+    private final CastLines castLines;
 
-    private String targetDir;
+    private final String targetDir;
 
     public ConcreteSpeechSynthesisListener(CastLines castLines, String targetDir) {
         this.castLines = castLines;
