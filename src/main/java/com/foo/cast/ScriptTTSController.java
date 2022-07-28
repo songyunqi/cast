@@ -4,7 +4,6 @@ import com.foo.cast.script.WavCombiner;
 import com.foo.cast.script.WavGenerator;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.FileChooser;
 
@@ -14,8 +13,6 @@ public class ScriptTTSController {
 
     @FXML
     private Label scriptFilePath;
-    @FXML
-    private Button tts;
 
     @FXML
     protected void onFileChooseClick() {
@@ -29,7 +26,7 @@ public class ScriptTTSController {
     }
 
     @FXML
-    protected void onTTSClick() throws Exception {
+    protected void onTTSClick() {
         String xlsxFilePathStr = scriptFilePath.getText();
         File xlsxFile = new File(xlsxFilePathStr);
         if (!xlsxFile.exists()) {
